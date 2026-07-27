@@ -119,7 +119,7 @@ The parts that make this reliable rather than just a demo:
 
 Watch a short walkthrough showing a hot lead and a cold lead routed differently in real time, from form submission to CRM record.
 
-[Watch the demo](https://www.loom.com/share/b993b72844bb4a8c815863858af73b89)
+[Watch the demo](https://www.loom.com/share/6d97d16b74c7436c85f1a606f9773822)
 
 ## Possible improvements
 
