@@ -6,7 +6,9 @@
         "httpMethod": "POST",
         "path": "triage",
         "responseMode": "responseNode",
-        "options": {}
+        "options": {
+          "allowedOrigins": "*"
+        }
       },
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
@@ -231,7 +233,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        512,
+        720,
         -160
       ],
       "id": "8f3225bc-def0-4c73-b67f-363e50eeb4c5",
@@ -252,7 +254,7 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        720,
+        928,
         -160
       ],
       "id": "c5e67b79-6911-4f44-8d21-58de1e20e921",
@@ -381,11 +383,37 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        512,
+        720,
         32
       ],
       "id": "b2e55579-975a-4811-b998-da00f12a3ed7",
       "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "resource": "lead",
+        "Company": "Website Lead",
+        "lastName": "={{ $('Webhook').item.json.body.name }}",
+        "additionalFields": {
+          "Description": "=Score {{ $('AI Agent').item.json.output.score }} - {{ $('AI Agent').item.json.output.reason }}",
+          "Email": "={{ $('Webhook').item.json.body.email }}",
+          "Lead_Source": "Website Form"
+        }
+      },
+      "type": "n8n-nodes-base.zohoCrm",
+      "typeVersion": 1,
+      "position": [
+        512,
+        -160
+      ],
+      "id": "0b3b0f8e-0ad7-4c7f-a9b5-0c4d791952e9",
+      "name": "Create a lead",
+      "credentials": {
+        "zohoOAuth2Api": {
+          "id": "CWEXDjkh6PXRg7dP",
+          "name": "Zoho account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -456,7 +484,7 @@
       "main": [
         [
           {
-            "node": "Append row in sheet",
+            "node": "Create a lead",
             "type": "main",
             "index": 0
           }
@@ -484,14 +512,26 @@
           }
         ]
       ]
+    },
+    "Create a lead": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1",
-    "binaryMode": "separate"
+    "binaryMode": "separate",
+    "availableInMCP": false
   },
-  "versionId": "74c83a99-5ff6-4b13-a422-1e16aaec4e97",
+  "versionId": "328e74a6-d64f-4347-a46e-7b589aea8844",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "4a767fca0bf38a658ff0dc0055cc2ba164bb08d3110a669de7a1752b34b22ddc"
