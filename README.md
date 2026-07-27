@@ -110,6 +110,11 @@ The parts that make this reliable rather than just a demo:
 - Replace the If node with a Switch node to route three tiers (Hot to alert, Warm to a nurture list, Cold to archive).
 - Respond to the caller first, then log and alert asynchronously, to minimize response latency.
 
+## Demo
+Watch a 55-second walkthrough showing a hot lead and a cold lead routed differently in real time.
+
+[Watch the 55-second demo](https://www.loom.com/share/0512def0cc90410fb076928fd714c0bd)
+
 ## Built by
 
 Melvin Licaros — Data Analyst exploring AI automation and agentic workflows.
